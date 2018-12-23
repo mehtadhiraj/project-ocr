@@ -1,0 +1,38 @@
+<%- include('./layout/header') -%>
+<main>
+    <!-- <h1>This is the home page</h1>
+    <select name="image" id="image" class="offset-md-3 col-sm-12 col-md-6 form-control mb-3 mt-3">
+        <option value="1">Image1</option>
+        <option value="2">Image2</option>
+        <option value="3">Image3</option>
+    </select>-->
+    <% if(pdfData.length > 0 ){ %>
+        <select name="pdf" id="pdf" class="offset-md-3 col-sm-12 col-md-6 form-control mb-3 mt-3">
+        <% pdfData.forEach(function(pdf){ %>
+            <option value="<%= pdf.pdfName %>"><%= pdf.pdfName %></option>
+        <% }) %>
+        </select>
+        <% pdfData.forEach(function(pdf){ %>
+            <% pdf.imageData.forEach(function(image){ %>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <img src="<%= image.imagePath %>" alt="Image Comes Here" width="100%">
+                    </div>
+                    <div id="tags" class="col-sm-12 col-md-6 taginput" contenteditable="true" tabindex="1">
+                        <% image.imageText.forEach(function(text){ %>
+                            <span style="color: <%= text.color %>" data-suggestions="[<%= text.suggestions %>]" class="text-word"><%= text.word %>&nbsp;</span>
+                            <% if(text.suggestions != null){ %>    
+                                <ul class="suggestion_list">
+                                    <% text.suggestions.forEach(function(suggestion){ %>
+                                        <li class="suggestion_list"><%= suggestion %></li>
+                                    <% }) %>
+                                </ul>
+                            <% } %>
+                        <% }) %>
+                    </div>
+                </div>
+            <% }) %> 
+        <% }) %>
+    <% } %>
+</main>
+<%- include('./layout/footer') -%>
