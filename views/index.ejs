@@ -14,21 +14,33 @@
         </select>
         <% pdfData.forEach(function(pdf){ %>
             <% pdf.imageData.forEach(function(image){ %>
-                <div class="row">
-                    <div class="col-sm-12 col-md-6">
-                        <img src="<%= image.imagePath %>" alt="Image Comes Here" width="100%">
+                <div class="row m-5 pdf-text">
+                    <div class="col-sm-12 col-md-6 img-container">
+                        <img src="<%= image.imagePath %>" alt="Image Comes Here" id="<%= image.imageId %>" class="mapper" usemap="#pdfImage">
+                        <map name="pdfImage">                            
+                            <% image.imageText.forEach(function(text){ %>
+                                <area shape="rect" coords="<%= text.pixelLocation %>" class="noborder icolor00ff00" id="<%= text.wordId %>">
+                            <% }) %>
+                        </map>
                     </div>
-                    <div id="tags" class="col-sm-12 col-md-6 taginput" contenteditable="true" tabindex="1">
-                        <% image.imageText.forEach(function(text){ %>
-                            <span style="color: <%= text.color %>" data-suggestions="[<%= text.suggestions %>]" class="text-word"><%= text.word %>&nbsp;</span>
-                            <% if(text.suggestions != null){ %>    
-                                <ul class="suggestion_list">
-                                    <% text.suggestions.forEach(function(suggestion){ %>
-                                        <li class="suggestion_list"><%= suggestion %></li>
-                                    <% }) %>
-                                </ul>
-                            <% } %>
-                        <% }) %>
+                    <div class="text-container col-sm-12 col-md-6">
+                        <div class="taginput" contenteditable="true" tabindex="1">
+                            <% image.imageText.forEach(function(text){ %>
+                                <% if(text.suggestions != null){ %> 
+                                    <span style="color: <%= text.color %>" class="text-word" data-coords="<%= text.pixelLocation %>" data-wordId="<%= text.wordId %>" data-imageId="<%= image.imageId %>">
+                                        <%= text.word %>
+                                    </span>   
+                                    <ul class="suggestion_list">
+                                        <% text.suggestions.forEach(function(suggestion){ %>
+                                            <li class="suggestion_items" contenteditable="false"><%= suggestion %></li>
+                                        <% }) %>
+                                    </ul>
+                                <% } else { %>
+                                    <span style="color: #000"><%= text.word %></span>
+                                <% } %>
+                            <% }) %>
+                        </div>
+                        <input type="button" value="Save" class="btn btn-success save-text-button">
                     </div>
                 </div>
             <% }) %> 

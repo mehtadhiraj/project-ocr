@@ -1,27 +1,63 @@
 body {
   padding: 50px;
-  font-size: 5vh;
+  font-size: 25px;
 }
 
 a {
   color: #00B7FF;
 }
 
+.row{
+  position: relative;
+}
+
 div{
+  overflow-x: visible;
+  max-height: 70vh;
+}
+
+.img-container{
   overflow: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
   max-height: 70vh;
 }
 
 div.taginput{
-  background-color: azure;
+  overflow-y: auto;
 }
 
 .suggestion_list{
   position: absolute;
-  z-index: 10;
+  z-index: 1000;
   display: none;
-  size: 50px;
+  list-style: none;
+  padding: 10px;
+  border-radius: 5px;
   background-color: honeydew;
+}
+
+li.suggestion_items:hover{
+  border: 2px solid #00B7FF;
+  padding: 5px;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  cursor: pointer;
+}
+
+li.suggestion_items:active{
+  background-color: beige;  
+}
+
+.save-text-button{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.text-container{
+  position: relative;
+  height: 70vh;
+  background-color: cornsilk;
+
 }

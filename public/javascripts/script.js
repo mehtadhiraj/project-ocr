@@ -1,13 +1,49 @@
+//Editing the text from  the given suggestion and highlighting the image
 $('.text-word').mouseenter( function(){
-    let word = $(this).text();
-    let suggestions = $(this).attr('data-suggestions');
-    let listContainer = $(this).nextAll(); 
-    console.log(listContainer.nextAll().css('display', 'inline'));
-    // console.log(listContainer.hasClass(".suggestion_list"));
+    let dataThis      = this,
+        listContainer = this.nextElementSibling,                  // Accessing ul list 
+        listItems     = listContainer.children,                   // Accessing complete list
+        dataAttributes= $(this).data(),                           // Fetching all data attributes
+        imageid       = dataAttributes.imageid;
+        
+    listContainer.style.display = "inline-block";
+
+    cvi_map.add(document.getElementById(imageid), {
+        opacity: '25', 
+        areacolor: '00ff00'
+    });
+    extAreaOver(imageid, dataAttributes.wordid);                  // Highlight the image area
+
+    $(listContainer).mouseleave(function(){
+        listContainer.style.display = "none";                     // Fade away suggestion
+        cvi_map.remove(document.getElementById(imageid));         // Fade away image highlight
+    });
+
+    //Get the selected list item and change text to selected item
+    $(listItems).on('click', function(){
+        let selectedSuggestion = $(this).text();
+        dataThis.innerText = selectedSuggestion;
+        dataThis.style.color = '#00f';
+    });
+});
+
+//Update Text 
+/**
+ * Get all the values from contenteditable field
+ * save it to the document in defined json format
+ */
+$('.save-text-button').on('click', function(){
+    let updatePdfWord = [];
+    let taginput = $(this).prev();
+    let childTaginput = taginput.children('span');
+    for(let i=0; i<childTaginput.length; i++){
+        updatePdfWord.push({
+            word: childTaginput[i].innerText,
+            color: childTaginput[i].style.color
+        });
+    }
+    console.log(updatePdfWord);
 })
-
-
-
 
 
 
