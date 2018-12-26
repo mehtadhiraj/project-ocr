@@ -5,14 +5,15 @@ $('.text-word').mouseenter( function(){
         listItems     = listContainer.children,                   // Accessing complete list
         dataAttributes= $(this).data(),                           // Fetching all data attributes
         imageid       = dataAttributes.imageid;
-        
-    listContainer.style.display = "inline-block";
-
+	
+	listContainer.style.display = "inline-block";
+    
     cvi_map.add(document.getElementById(imageid), {
         opacity: '25', 
         areacolor: '00ff00'
     });
     extAreaOver(imageid, dataAttributes.wordid);                  // Highlight the image area
+    document.getElementById(dataAttributes.wordid).focus();
 
     $(listContainer).mouseleave(function(){
         listContainer.style.display = "none";                     // Fade away suggestion
@@ -26,6 +27,48 @@ $('.text-word').mouseenter( function(){
         dataThis.style.color = '#00f';
     });
 });
+
+
+//For text with no suggestion
+$('.text-no-suggestion').mouseenter( function(){
+    let dataAttributes= $(this).data(),                           // Fetching all data attributes
+        imageid       = dataAttributes.imageid;
+        
+    cvi_map.add(document.getElementById(imageid), {
+        opacity: '25', 
+        areacolor: '00ff00'
+    });
+    extAreaOver(imageid, dataAttributes.wordid);                  // Highlight the image area
+    
+}).mouseleave(function(){
+    let dataAttributes= $(this).data(),                           // Fetching all data attributes
+        imageid       = dataAttributes.imageid;
+    cvi_map.remove(document.getElementById(imageid));             // Fade away image highlight
+})
+
+// Image hover get data
+$('.map-image').mouseenter(function(){
+    let imageid = $(this).attr('id');
+
+    if(imageid != null || imageid != undefined){
+        cvi_map.remove(document.getElementById(imageid));             // Fade away image highlight
+        cvi_map.add(document.getElementById(imageid), {
+            opacity: '25', 
+            areacolor: 'fff'
+        });
+    }
+
+    $("area").mouseenter(function(){
+        let areaData = $(this).data();
+        let wordElement = document.getElementById(areaData.textid);
+        let imageId = areaData.imageid;
+        wordElement.style.backgroundColor = "#aaa";
+
+        $('area').mouseleave(function(){
+            wordElement.style.backgroundColor = "cornsilk";    
+        })
+    })
+})
 
 //Update Text 
 /**

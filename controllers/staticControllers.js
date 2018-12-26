@@ -16,7 +16,7 @@ module.exports.index = function(req, res, next){
                                 wordId: '0011',
                                 word: 'Your',
                                 color: '#000',
-                                pixelLocation: '0,0,82,126',
+                                pixelLocation: '5,10,45,30',
                                 suggestions: null
                             },
                             {
@@ -32,7 +32,7 @@ module.exports.index = function(req, res, next){
                                 wordId: '0013',
                                 word: 'for Christ offering is making',
                                 color: '#000',
-                                pixelLocation: '0,0,82,126',
+                                pixelLocation: '170,10,105,50',
                                 suggestions: null
                             },
                             {
@@ -42,6 +42,14 @@ module.exports.index = function(req, res, next){
                                 color: '#0f0',
                                 pixelLocation: '10,50,100,80',
                                 suggestions: ['life-changing', 'life', 'changing', 'life changing', 'Life Changing']
+                            },
+                            {
+                                // Details for 2nd word in a sentence.
+                                wordId: '0013',
+                                word: 'for Christ offering is making',
+                                color: '#000',
+                                pixelLocation: '170,10,105,50',
+                                suggestions: null
                             }
                         ]
                     },
