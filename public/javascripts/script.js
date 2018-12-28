@@ -1,45 +1,50 @@
 //Editing the text from  the given suggestion and highlighting the image
-$('.text-word').mouseenter(function(){
+$('.text-word').hover(function(){
     let dataThis      = this,
-        listContainer = this.nextElementSibling,                  // Accessing ul list 
-        listItems     = listContainer.children,                   // Accessing complete list
         dataAttributes= $(this).data(),                           // Fetching all data attributes
         imageid       = dataAttributes.imageid,
         suggestions   = dataAttributes.suggestions.split(','),
         wordId        = '#'+$(this).attr('id'),
+        containerName = wordId.split('-'),
+        listContainer = $('[name="'+containerName[1]+'"]')[0],    // Accessing ul list 
+        listItems     = listContainer.children,                   // Accessing complete list
         data          = { items: [] };
 
     listContainer.style.display = "inline-block";
     
-    // // Creating an object of suggetions
-    // suggestions.forEach(function(suggestion) {
-    //     data.items.push({
-    //         "display_name":suggestion
-    //     })
-    // });
+    // Creating an object of suggetions
+    suggestions.forEach(function(suggestion) {
+        data.items.push({
+            "display_name":suggestion
+        })
+    });
 
-    // // Autocomplete text suggestion
-    // $(wordId).autocomplete({
-    //     source: $.map(data.items, function(item) {
-    //         return item.display_name;
-    //     }),
-    //     minLength: 0
-    // }).click(function () {
-    //     $('.ui-menu').css('display', 'inline-block')
-    // });
-   
+    // Autocomplete text suggestion
+    $(wordId).autocomplete({
+        select: function(){
+            dataThis.style.color = "#00f";                     
+        },
+        source: $.map(data.items, function(item) {
+            return item.display_name;
+        }),
+        autoFocus: true,
+        minLength: 0
+    });
+    
+    // Highlight the image area
     cvi_map.add(document.getElementById(imageid), {
         opacity: '25', 
         areacolor: '00ff00'
     });
-    extAreaOver(imageid, dataAttributes.wordid);                  // Highlight the image area
+    extAreaOver(imageid, dataAttributes.wordid);                  
 
-    $(listContainer).mouseleave(function(){
-        listContainer.style.display = "none";                     // Fade away suggestion
-        cvi_map.remove(document.getElementById(imageid));         // Fade away image highlight
+    // Fade away suggestion and image highlight
+    $('.text-word').mouseleave(function(){
+        listContainer.style.display = "none";                     
+        cvi_map.remove(document.getElementById(imageid));     
     });
 
-    //Get the selected list item and change text to selected item
+    // Get the selected list item and change text to selected item
     $(listItems).on('click', function(){
         let selectedSuggestion = $(this).text();
         dataThis.innerText = selectedSuggestion;
@@ -47,21 +52,22 @@ $('.text-word').mouseenter(function(){
     });
 });
 
-//For text with no suggestion
+// For text with no suggestion
 $('.text-no-suggestion').mouseenter( function(){
     let dataAttributes= $(this).data(),                           // Fetching all data attributes
-        imageid       = dataAttributes.imageid;
+        imageid       = dataAttributes.imageid;                   // Get data attributes of a text
         
+    // Highlight the image area
     cvi_map.add(document.getElementById(imageid), {
         opacity: '25', 
         areacolor: '00ff00'
     });
-    extAreaOver(imageid, dataAttributes.wordid);                  // Highlight the image area
+    extAreaOver(imageid, dataAttributes.wordid);                  
     
 }).mouseleave(function(){
-    let dataAttributes= $(this).data(),                           // Fetching all data attributes
+    let dataAttributes= $(this).data(),                           
         imageid       = dataAttributes.imageid;
-    cvi_map.remove(document.getElementById(imageid));             // Fade away image highlight
+    cvi_map.remove(document.getElementById(imageid));             
 })
 
 // Image hover get data
@@ -69,7 +75,7 @@ $('.map-image').mouseenter(function(){
     let imageid = $(this).attr('id');
 
     if(imageid != null || imageid != undefined){
-        cvi_map.remove(document.getElementById(imageid));             // Fade away image highlight
+        cvi_map.remove(document.getElementById(imageid));         
         cvi_map.add(document.getElementById(imageid), {
             opacity: '25', 
             areacolor: 'fff'
@@ -77,13 +83,14 @@ $('.map-image').mouseenter(function(){
     }
 
     $("area").mouseenter(function(){
-        let areaData = $(this).data();
-        let wordElement = document.getElementById(areaData.textid);
-        let imageId = areaData.imageid;
+        let areaData    = $(this).data(),
+            wordElement = document.getElementById(areaData.textid),
+            imageId     = areaData.imageid;
+
         wordElement.style.backgroundColor = "#aaa";
 
         $('area').mouseleave(function(){
-            wordElement.style.backgroundColor = "cornsilk";    
+            wordElement.style.backgroundColor = "#fafafa";    
         })
     })
 })
@@ -94,9 +101,12 @@ $('.map-image').mouseenter(function(){
  * save it to the document in defined json format
  */
 $('.save-text-button').on('click', function(){
-    let pdfSelectTag = document.getElementById('pdf');
-    let pdfName = pdfSelectTag.value;
-    let updatePdfWord = {};
+    let pdfSelectTag = document.getElementById('pdf'),
+        pdfName = pdfSelectTag.value,
+        updatePdfWord = {},
+        taginput = $(this).prev(),
+        childTaginput = taginput.children('span');
+    
     updatePdfWord = {
         "pdfData": [
             {
@@ -105,9 +115,7 @@ $('.save-text-button').on('click', function(){
             }
         ]
     };
-    let taginput = $(this).prev();
     console.log(taginput)
-    let childTaginput = taginput.children('span');
     updatePdfWord.pdfData[0].imageData.push({
         "imageId": childTaginput[0].getAttribute('data-imageid')
     });
@@ -123,6 +131,85 @@ $('.save-text-button').on('click', function(){
     }
     console.log(updatePdfWord);
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // let data = {
 //     item: [
@@ -145,26 +232,6 @@ $('.save-text-button').on('click', function(){
 //         minLength: 1
 //     });
 // });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

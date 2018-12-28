@@ -24,7 +24,7 @@
                                     <span contenteditable="true" style="color: <%= text.color %>" id="word-<%= text.wordId %>" class="autocomplete text-word" data-coords="<%= text.pixelLocation %>" data-wordId="<%= text.wordId %>" data-imageId="<%= image.imageId %>" data-suggestions="<%= text.suggestions %>">
                                         <%= text.word %>
                                     </span>
-                                    <ul class="suggestion_list">
+                                    <ul class="suggestion_list" name="<%= text.wordId %>">
                                         <% text.suggestions.forEach(function(suggestion){ %>
                                             <a href="#" class="list"> <li class="suggestion_items" contenteditable="false"><%= suggestion %></li> </a>
                                         <% }) %>

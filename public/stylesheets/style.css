@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font-size: 25px;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 a {
@@ -32,7 +33,7 @@ div.taginput{
   list-style: none;
   padding: 10px;
   border-radius: 5px;
-  background-color: #b4c4c4;
+  background-color: #eceff1;
 }
 
 li.suggestion_items:hover{
@@ -43,10 +44,11 @@ li.suggestion_items:hover{
   -ms-user-select: none;
   -moz-user-select: none;
   cursor: pointer;
+  box-shadow: -5px 0 #fafafa;
 }
 
 li.suggestion_items:active{
-  background-color: beige;  
+  background-color: #fafafa;  
 }
 
 .save-text-button{
@@ -58,7 +60,7 @@ li.suggestion_items:active{
 .text-container{
   position: relative;
   height: 70vh;
-  background-color: cornsilk;
+  background-color: #fafafa;
 
 }
 
