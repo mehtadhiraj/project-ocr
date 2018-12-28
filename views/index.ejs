@@ -18,19 +18,19 @@
                         </map>
                     </div>
                     <div class="text-container col-sm-12 col-md-6">
-                        <div class="taginput" contenteditable="true">
+                        <div class="taginput">
                             <% image.imageText.forEach(function(text){ %>
                                 <% if(text.suggestions != null){ %>
-                                    <span style="color: <%= text.color %>" id="word-<%= text.wordId %>" class="text-word" data-coords="<%= text.pixelLocation %>" data-wordId="<%= text.wordId %>" data-imageId="<%= image.imageId %>">
+                                    <span contenteditable="true" style="color: <%= text.color %>" id="word-<%= text.wordId %>" class="autocomplete text-word" data-coords="<%= text.pixelLocation %>" data-wordId="<%= text.wordId %>" data-imageId="<%= image.imageId %>" data-suggestions="<%= text.suggestions %>">
                                         <%= text.word %>
                                     </span>
                                     <ul class="suggestion_list">
                                         <% text.suggestions.forEach(function(suggestion){ %>
-                                            <li class="suggestion_items" contenteditable="false"><%= suggestion %></li>
+                                            <a href="#" class="list"> <li class="suggestion_items" contenteditable="false"><%= suggestion %></li> </a>
                                         <% }) %>
                                     </ul>
                                 <% } else { %>
-                                    <span style="color: #000" id="word-<%= text.wordId %>" class="text-no-suggestion" data-coords="<%= text.pixelLocation %>" data-wordId="<%= text.wordId %>" data-imageId="<%= image.imageId %>">
+                                    <span contenteditable="true" style="color: #000" id="word-<%= text.wordId %>" class="autocomplete text-no-suggestion" data-coords="<%= text.pixelLocation %>" data-wordId="<%= text.wordId %>" data-imageId="<%= image.imageId %>">
                                         <%= text.word %>
                                     </span>
                                 <% } %>

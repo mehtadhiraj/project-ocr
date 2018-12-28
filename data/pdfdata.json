@@ -1,0 +1,84 @@
+{
+    "pdfData": [
+        {
+            "pdfName": "MyPdf",
+            "imageData": [
+                {
+                    "imageId": "0001",
+                    "imagePath": "/images/eng-text.png",
+                    "imageText": [
+                        {
+                            "wordId": "0011",
+                            "word": "Your",
+                            "color": "#000",
+                            "pixelLocation": "5,10,45,30",
+                            "suggestions": null
+                        },
+                        {
+                            "wordId": "0012",
+                            "word": "Amrica",
+                            "color": "#f00",
+                            "pixelLocation": "45,10,105,30",
+                            "suggestions": ["America", "Amerigo", "North America", "South America", "United States of America"]
+                        },
+                        {
+                            "wordId": "0013",
+                            "word": "for Christ offering is making",
+                            "color": "#000",
+                            "pixelLocation": "170,10,105,50",
+                            "suggestions": null
+                        },
+                        {
+                            "wordId": "0014",
+                            "word": "lifechanging",
+                            "color": "#0f0",
+                            "pixelLocation": "10,50,100,80",
+                            "suggestions": ["life-changing", "life", "changing", "life changing", "Life Changing"]
+                        },
+                        {
+                            "wordId": "0013",
+                            "word": "for Christ offering is making",
+                            "color": "#000",
+                            "pixelLocation": "170,10,105,50",
+                            "suggestions": null
+                        }
+                    ]
+                },
+                {
+                    "imageId": "0002",
+                    "imagePath": "/images/eng-text.png",
+                    "imageText": [
+                        {
+                            "wordId": "0021",
+                            "word": "Your",
+                            "color": "#000",
+                            "pixelLocation": "0,0,82,126",
+                            "suggestions": null
+                        },
+                        {
+                            "wordId": "0022",
+                            "word": "Amrica",
+                            "color": "#f00",
+                            "pixelLocation": "45,10,105,30",
+                            "suggestions": ["America", "Amerigo", "North America", "South America", "United States of America"]
+                        },
+                        {
+                            "wordId": "00023",
+                            "word": "for Christ offering is making",
+                            "color": "#000",
+                            "pixelLocation": "0,0,82,126",
+                            "suggestions": null
+                        },
+                        {
+                            "wordId": "0024",
+                            "word": "lifechanging",
+                            "color": "#0f0",
+                            "pixelLocation": "10,50,100,80",
+                            "suggestions": ["life-changing", "life", "changing", "life changing", "Life Changing"]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

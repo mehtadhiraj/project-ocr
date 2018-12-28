@@ -1,19 +1,38 @@
 //Editing the text from  the given suggestion and highlighting the image
-$('.text-word').mouseenter( function(){
+$('.text-word').mouseenter(function(){
     let dataThis      = this,
         listContainer = this.nextElementSibling,                  // Accessing ul list 
         listItems     = listContainer.children,                   // Accessing complete list
         dataAttributes= $(this).data(),                           // Fetching all data attributes
-        imageid       = dataAttributes.imageid;
-	
-	listContainer.style.display = "inline-block";
+        imageid       = dataAttributes.imageid,
+        suggestions   = dataAttributes.suggestions.split(','),
+        wordId        = '#'+$(this).attr('id'),
+        data          = { items: [] };
+
+    listContainer.style.display = "inline-block";
     
+    // // Creating an object of suggetions
+    // suggestions.forEach(function(suggestion) {
+    //     data.items.push({
+    //         "display_name":suggestion
+    //     })
+    // });
+
+    // // Autocomplete text suggestion
+    // $(wordId).autocomplete({
+    //     source: $.map(data.items, function(item) {
+    //         return item.display_name;
+    //     }),
+    //     minLength: 0
+    // }).click(function () {
+    //     $('.ui-menu').css('display', 'inline-block')
+    // });
+   
     cvi_map.add(document.getElementById(imageid), {
         opacity: '25', 
         areacolor: '00ff00'
     });
     extAreaOver(imageid, dataAttributes.wordid);                  // Highlight the image area
-    document.getElementById(dataAttributes.wordid).focus();
 
     $(listContainer).mouseleave(function(){
         listContainer.style.display = "none";                     // Fade away suggestion
@@ -27,7 +46,6 @@ $('.text-word').mouseenter( function(){
         dataThis.style.color = '#00f';
     });
 });
-
 
 //For text with no suggestion
 $('.text-no-suggestion').mouseenter( function(){
@@ -76,21 +94,57 @@ $('.map-image').mouseenter(function(){
  * save it to the document in defined json format
  */
 $('.save-text-button').on('click', function(){
-    let updatePdfWord = [];
+    let pdfSelectTag = document.getElementById('pdf');
+    let pdfName = pdfSelectTag.value;
+    let updatePdfWord = {};
+    updatePdfWord = {
+        "pdfData": [
+            {
+                "pdfName": pdfName,
+                "imageData": []
+            }
+        ]
+    };
     let taginput = $(this).prev();
+    console.log(taginput)
     let childTaginput = taginput.children('span');
+    updatePdfWord.pdfData[0].imageData.push({
+        "imageId": childTaginput[0].getAttribute('data-imageid')
+    });
     for(let i=0; i<childTaginput.length; i++){
-        updatePdfWord.push({
-            word: childTaginput[i].innerText,
-            color: childTaginput[i].style.color
+        updatePdfWord.pdfData[0].imageData.push({
+            "imageText": [{
+                wordId: childTaginput[i].getAttribute('data-wordid'),
+                word: childTaginput[i].innerText,
+                color: childTaginput[i].style.color,
+                pixelLocation: childTaginput[i].getAttribute('data-coords')
+            }]
         });
     }
     console.log(updatePdfWord);
 })
 
+// let data = {
+//     item: [
+//         {display_name: 'Dhiraj'},
+//         {display_name: 'Dhiraj'},
+//         {display_name: 'Dhiraj'},
+//         {display_name: 'Dhiraj'},
+//         {display_name: 'Dhiraj'},
+//         {display_name: 'Dhiraj'},
+//         {display_name: 'Dhiraj'}
+//     ]
+// }
 
+// let tgas = ['America', 'life', 'Dhiraj Mukul', 'Dhiraj Rocks']
 
-
+// $('.text-word').mouseenter(function() {
+//     $(".autocomplete").autocomplete({
+//         source: tgas,
+//         delay: 50,
+//         minLength: 1
+//     });
+// });
 
 
 

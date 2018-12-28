@@ -32,7 +32,7 @@ div.taginput{
   list-style: none;
   padding: 10px;
   border-radius: 5px;
-  background-color: honeydew;
+  background-color: #b4c4c4;
 }
 
 li.suggestion_items:hover{
@@ -64,4 +64,15 @@ li.suggestion_items:active{
 
 map:hover{
   background-color: azure;
+}
+
+span {
+  border-left: 1px solid #00B7FF;
+  border-right: 1px solid #00B7FF;
+  border-top: 1px solid #00B7FF;
+}
+
+a.list{
+  color: black;
+  text-decoration: none;
 }
