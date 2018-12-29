@@ -1,16 +1,36 @@
+// $('.text-word').keypress(function(){
+//     alert('hrjre')
+// })
+
+$(".img-container, .text-container").on("scroll", function() {
+    $(".img-container, .text-container").scrollTop($(this).scrollTop());
+});
+
 //Editing the text from  the given suggestion and highlighting the image
-$('.text-word').hover(function(){
+$('.text-word').click(function(){
     let dataThis      = this,
         dataAttributes= $(this).data(),                           // Fetching all data attributes
         imageid       = dataAttributes.imageid,
         suggestions   = dataAttributes.suggestions.split(','),
         wordId        = '#'+$(this).attr('id'),
         containerName = wordId.split('-'),
-        listContainer = $('[name="'+containerName[1]+'"]')[0],    // Accessing ul list 
-        listItems     = listContainer.children,                   // Accessing complete list
-        data          = { items: [] };
-
-    listContainer.style.display = "inline-block";
+        data          = { items: [] },
+        list          = "";
+    
+    // If list of suggestions is not appended append the list by creating the ul element
+    if($('[name="'+containerName[1]+'"]').length == 0){
+        // 
+        for (let suggestionsIndex = 0; suggestionsIndex < suggestions.length; suggestionsIndex++) {
+            list += "<a href='#' class='list' tabindex="+(suggestionsIndex)+"> <li class='suggestion_items' tabindex='0' contenteditable='false'>"+suggestions[suggestionsIndex]+"</li> </a>";
+            
+        }
+    
+        $(this).append("<ul class='suggestion_list'  tabindex='0' name='"+containerName[1]+"'>"+list+"</ul>")
+    }
+    let listContainer = $('[name="'+containerName[1]+'"]')[0],    // Accessing ul list 
+        listItems     = listContainer.children;                   // Accessing complete list
+        
+    listContainer.style.display = "inline-block";                 // make list visible  
     
     // Creating an object of suggetions
     suggestions.forEach(function(suggestion) {
@@ -30,6 +50,8 @@ $('.text-word').hover(function(){
         autoFocus: true,
         minLength: 0
     });
+
+   
     
     // Highlight the image area
     cvi_map.add(document.getElementById(imageid), {
@@ -40,7 +62,14 @@ $('.text-word').hover(function(){
 
     // Fade away suggestion and image highlight
     $('.text-word').mouseleave(function(){
-        listContainer.style.display = "none";                     
+        // listContainer.style.display = "none";                     
+        $('[name="'+containerName[1]+'"]').remove();                     
+        cvi_map.remove(document.getElementById(imageid));     
+    });
+
+    $(listContainer).mouseleave(function(){
+        // listContainer.style.display = "none";
+        $('[name="'+containerName[1]+    '"]').remove();                     
         cvi_map.remove(document.getElementById(imageid));     
     });
 
@@ -52,8 +81,10 @@ $('.text-word').hover(function(){
     });
 });
 
+
+
 // For text with no suggestion
-$('.text-no-suggestion').mouseenter( function(){
+$('.text-no-suggestion').click( function(){
     let dataAttributes= $(this).data(),                           // Fetching all data attributes
         imageid       = dataAttributes.imageid;                   // Get data attributes of a text
         
@@ -62,12 +93,13 @@ $('.text-no-suggestion').mouseenter( function(){
         opacity: '25', 
         areacolor: '00ff00'
     });
-    extAreaOver(imageid, dataAttributes.wordid);                  
+    extAreaOver(imageid, dataAttributes.wordid);  
     
-}).mouseleave(function(){
-    let dataAttributes= $(this).data(),                           
-        imageid       = dataAttributes.imageid;
-    cvi_map.remove(document.getElementById(imageid));             
+    this.click(function(){
+        let dataAttributes= $(this).data(),                           
+            imageid       = dataAttributes.imageid;
+        cvi_map.remove(document.getElementById(imageid));             
+    })    
 })
 
 // Image hover get data
@@ -82,6 +114,7 @@ $('.map-image').mouseenter(function(){
         });
     }
 
+    // With hoverable
     $("area").mouseenter(function(){
         let areaData    = $(this).data(),
             wordElement = document.getElementById(areaData.textid),
@@ -89,7 +122,21 @@ $('.map-image').mouseenter(function(){
 
         wordElement.style.backgroundColor = "#aaa";
 
-        $('area').mouseleave(function(){
+        // $('area').mouseleave(function(){
+        //     wordElement.style.backgroundColor = "#fafafa";    
+        // })
+    })
+
+    //With mouse click
+    $("area").click(function(){
+        let areaData    = $(this).data(),
+            wordElement = document.getElementById(areaData.textid),
+            imageId     = areaData.imageid;
+
+        wordElement.style.backgroundColor = "#fafafa";    
+        wordElement.style.backgroundColor = "#aaa";
+
+        $('area').click(function(){
             wordElement.style.backgroundColor = "#fafafa";    
         })
     })
