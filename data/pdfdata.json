@@ -5,39 +5,212 @@
             "imageData": [
                 {
                     "imageId": "0001",
-                    "imagePath": "/images/eng-text.png",
+                    "imagePath": "/images/text-image.jpg",
                     "imageText": [
                         {
                             "wordId": "0011",
-                            "word": "Your",
+                            "word": "Latin: About",
+                            "color": "#000",
+                            "pixelLocation": "50,20,280,60",
+                            "suggestions": null
+                        },
+                        {
+                            "wordId": "0012",
+                            "word": "3%",
+                            "color": "#0f0",
+                            "pixelLocation": "285,20,440,60",
+                            "suggestions": ["3 Percent", "3 percent", "3 Percentage", "3 percentage", "3 percentile"]
+                        },
+                        {
+                            "wordId": "0013",
+                            "word": "of the old English word stock",
+                            "color": "#000",
+                            "pixelLocation": "440,20,910,60",
+                            "suggestions": null
+                        },
+                        {
+                            "wordId": "0014",
+                            "word": "comes from Latin, or in some",
+                            "color": "#000",
+                            "pixelLocation": "50,60,720,100",
+                            "suggestions": null                        },
+                        {
+                            "wordId": "0015",
+                            "word": "Geek",
+                            "color": "#f00",
+                            "pixelLocation": "715,60,820,100",
+                            "suggestions": ["Greek", "greek", "geek", "Greeks", "greeks"]
+                        },{
+                            "wordId": "0016",
+                            "word": "through Latin Based on various",
+                            "color": "#000",
+                            "pixelLocation": "50,110,450,150",
+                            "suggestions": null
+                        },
+                        {
+                            "wordId": "0018",
+                            "word": "philological",
+                            "color": "#f00",
+                            "pixelLocation": "450,110,640,150",
+                            "suggestions": ["philological", "Philological", "physiological", "logical", "physical"]
+                        },
+                        {
+                            "wordId": "0019",
+                            "word": "criteria, we can identify in two main groups of Latin words recorded in extant",
+                            "color": "#000",
+                            "pixelLocation": "50,150,900,190",
+                            "suggestions": null
+                        },
+                        {
+                            "wordId": "00110",
+                            "word": "oldenglish",
+                            "color": "#0f0",
+                            "pixelLocation": "170,10,105,50",
+                            "suggestions": ["Old English", "old english", "Old-English", "old-english", "English"]
+                        },
+                        {
+                            "wordId": "00111",
+                            "word": "texts:",
                             "color": "#000",
                             "pixelLocation": "5,10,45,30",
                             "suggestions": null
                         },
                         {
-                            "wordId": "0012",
-                            "word": "Amrica",
+                            "wordId": "00112",
+                            "word": "continent",
                             "color": "#f00",
                             "pixelLocation": "45,10,105,30",
-                            "suggestions": ["America", "Amerigo", "North America", "South America", "United States of America"]
+                            "suggestions": ["continential", "Continential", "Continent", "continents", "Continents"]
                         },
                         {
-                            "wordId": "0013",
-                            "word": "for Christ offering is making",
+                            "wordId": "00113",
+                            "word": "borrowings and",
                             "color": "#000",
                             "pixelLocation": "170,10,105,50",
                             "suggestions": null
                         },
                         {
-                            "wordId": "0014",
-                            "word": "lifechanginglifechanginglifechanginglifechanging",
-                            "color": "#0f0",
+                            "wordId": "00114",
+                            "word": "Chrstanity",
+                            "color": "#f00",
                             "pixelLocation": "10,50,100,80",
-                            "suggestions": ["life-changing", "life", "changing", "life changing", "Life Changing"]
+                            "suggestions": ["Christanity", "christanity", "Christian", "christian", "Christ"]
                         },
                         {
-                            "wordId": "0013",
-                            "word": "for Christ offering is making",
+                            "wordId": "00115",
+                            "word": "and monastic culture.",
+                            "color": "#000",
+                            "pixelLocation": "170,10,105,50",
+                            "suggestions": null
+                        },
+                        {
+                            "wordId": "0018",
+                            "word": "philological",
+                            "color": "#f00",
+                            "pixelLocation": "170,10,105,50",
+                            "suggestions": ["philological", "Philological", "physiological", "logical", "physical"]
+                        },
+                        {
+                            "wordId": "0019",
+                            "word": "criteria, we can identify in two main groups of Latin words recorded in extant",
+                            "color": "#000",
+                            "pixelLocation": "10,50,100,80",
+                            "suggestions": null
+                        },
+                        {
+                            "wordId": "00110",
+                            "word": "oldenglish",
+                            "color": "#0f0",
+                            "pixelLocation": "170,10,105,50",
+                            "suggestions": ["Old English", "old english", "Old-English", "old-english", "English"]
+                        },
+                        {
+                            "wordId": "00111",
+                            "word": "texts:",
+                            "color": "#000",
+                            "pixelLocation": "5,10,45,30",
+                            "suggestions": null
+                        },
+                        {
+                            "wordId": "00112",
+                            "word": "continent",
+                            "color": "#f00",
+                            "pixelLocation": "45,10,105,30",
+                            "suggestions": ["continential", "Continential", "Continent", "continents", "Continents"]
+                        },
+                        {
+                            "wordId": "00113",
+                            "word": "borrowings and",
+                            "color": "#000",
+                            "pixelLocation": "170,10,105,50",
+                            "suggestions": null
+                        },
+                        {
+                            "wordId": "00114",
+                            "word": "Chrstanity",
+                            "color": "#f00",
+                            "pixelLocation": "10,50,100,80",
+                            "suggestions": ["Christanity", "christanity", "Christian", "christian", "Christ"]
+                        },
+                        {
+                            "wordId": "00115",
+                            "word": "and monastic culture. 1",
+                            "color": "#000",
+                            "pixelLocation": "170,10,105,50",
+                            "suggestions": null
+                        },
+                        {
+                            "wordId": "00112",
+                            "word": "continent",
+                            "color": "#f00",
+                            "pixelLocation": "170,10,105,50",
+                            "suggestions": ["continential", "Continential", "Continent", "continents", "Continents"]
+                        },
+                        {
+                            "wordId": "00116",
+                            "word": ": camp, miles, street, cheese, wine, gem, linen, wall.",
+                            "color": "#000",
+                            "pixelLocation": "10,50,100,80",
+                            "suggestions": null
+                        },
+                        {
+                            "wordId": "00114",
+                            "word": "Chrstanity",
+                            "color": "#f00",
+                            "pixelLocation": "10,50,100,80",
+                            "suggestions": ["Christanity", "christanity", "Christian", "christian", "Christ"]
+                        },
+                        {
+                            "wordId": "00117",
+                            "word": "and monastic culture: A large number of the Latin words burrowed in that period were words related to Christian religion and religious practices:",
+                            "color": "#000",
+                            "pixelLocation": "5,10,45,30",
+                            "suggestions": null
+                        },
+                        {
+                            "wordId": "00118",
+                            "word": "abbot, candel",
+                            "color": "#000",
+                            "pixelLocation": "45,10,105,30",
+                            "suggestions": null
+                        },
+                        {
+                            "wordId": "00119",
+                            "word": "congretion",
+                            "color": "#f00",
+                            "pixelLocation": "170,10,105,50",
+                            "suggestions": ["congregation", "Congregation", "congregate", "Congregate", "Congret"]
+                        },
+                        {
+                            "wordId": "00120",
+                            "word": "devil, disciple, eternal, martyr, mass, pope, noon, offer, testament.",
+                            "color": "#000",
+                            "pixelLocation": "10,50,100,80",
+                            "suggestions": ["Christanity", "christanity", "Christian", "christian", "Christ"]
+                        },
+                        {
+                            "wordId": "00121",
+                            "word": "Other Latin borrowings from that period have become common everyday words: fever, giant, port, mount, pear, plant, polite, radish",
                             "color": "#000",
                             "pixelLocation": "170,10,105,50",
                             "suggestions": null

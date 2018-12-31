@@ -25,40 +25,49 @@ $('.text-word').click(function(){
             
         }
     
-        $(this).append("<ul class='suggestion_list'  tabindex='0' name='"+containerName[1]+"'>"+list+"</ul>")
+        $(this).append("<ul class='suggestion_list'  tabindex='0' name='"+containerName[1]+"'><div class='ui-widget'><input type='text' id='input-"+containerName[1]+"' /></div>"+list+"</ul>")
     }
     let listContainer = $('[name="'+containerName[1]+'"]')[0],    // Accessing ul list 
-        listItems     = listContainer.children;                   // Accessing complete list
-        
+        listItems     = $('.suggestion_items'),                   // Accessing complete list
+        inputSelect   = $('#input-'+containerName[1]);
+console.log(inputSelect.selector);
     listContainer.style.display = "inline-block";                 // make list visible  
     
-    // Creating an object of suggetions
-    suggestions.forEach(function(suggestion) {
-        data.items.push({
-            "display_name":suggestion
-        })
-    });
+    // // Creating an object of suggetions
+    // suggestions.forEach(function(suggestion) {
+    //     data.items.push({
+    //         "display_name":suggestion
+    //     })
+    // });
 
-    // Autocomplete text suggestion
-    $(wordId).autocomplete({
+    // // Autocomplete text suggestion
+    // $(wordId).autocomplete({
+    //     select: function(){
+    //         dataThis.style.color = "#00f";                     
+    //     },
+    //     source: $.map(data.items, function(item) {
+    //         return item.display_name;
+    //     }),
+    //     autoFocus: true,
+    //     minLength: 0
+    // });
+
+      $(inputSelect.selector).autocomplete({
+        source: suggestions,
         select: function(){
-            dataThis.style.color = "#00f";                     
-        },
-        source: $.map(data.items, function(item) {
-            return item.display_name;
-        }),
-        autoFocus: true,
-        minLength: 0
-    });
-
-   
+            dataThis.innerText = $(this).val();
+            dataThis.style.color = '#00f';
+            $('ul.ui-autocomplete.ui-menu.ui-widget.ui-widget-content.ui-corner-all').remove();
+        }
+      });
     
     // Highlight the image area
+    cvi_map.remove(document.getElementById(imageid));     
     cvi_map.add(document.getElementById(imageid), {
         opacity: '25', 
         areacolor: '00ff00'
     });
-    extAreaOver(imageid, dataAttributes.wordid);                  
+    extAreaOver(imageid, dataAttributes.wordid);
 
     // Fade away suggestion and image highlight
     $('.text-word').mouseleave(function(){
@@ -69,7 +78,7 @@ $('.text-word').click(function(){
 
     $(listContainer).mouseleave(function(){
         // listContainer.style.display = "none";
-        $('[name="'+containerName[1]+    '"]').remove();                     
+        $('[name="'+containerName[1]+'"]').remove();                    
         cvi_map.remove(document.getElementById(imageid));     
     });
 
@@ -89,6 +98,7 @@ $('.text-no-suggestion').click( function(){
         imageid       = dataAttributes.imageid;                   // Get data attributes of a text
         
     // Highlight the image area
+    cvi_map.remove(document.getElementById(imageid));     
     cvi_map.add(document.getElementById(imageid), {
         opacity: '25', 
         areacolor: '00ff00'
